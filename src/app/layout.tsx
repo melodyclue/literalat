@@ -10,8 +10,8 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-	title: "Reo Yamashita",
-	description: "ソフトウェアエンジニア & デザイナー",
+	title: "Reoのポートフォリオ",
+	description: "フルスタックエンジニア Reo のポートフォリオです。",
 };
 
 export default function RootLayout({
