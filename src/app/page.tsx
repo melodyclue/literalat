@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Star, Code, Github, Twitter, Contact } from "lucide-react";
-import posthog from "posthog-js";
+import { usePostHog } from 'posthog-js/react'
 
 export default function Home() {
+	  const posthog = usePostHog()
+
 	const socialLinks = [
 		{
 			name: "GitHub",
@@ -74,7 +77,7 @@ export default function Home() {
 						</p>
 						<div className="flex justify-center gap-3">
 							{socialLinks.map((link) => (
-								<a
+								<Link
 									key={link.name}
 									href={link.url}
 									target="_blank"
@@ -89,7 +92,7 @@ export default function Home() {
 									}}
 								>
 									{link.icon}
-								</a>
+								</Link>
 							))}
 						</div>
 					</div>
@@ -113,7 +116,7 @@ export default function Home() {
 						</h2>
 						<div className="flex flex-col space-y-6">
 							{projects.map((project) => (
-								<a
+								<Link
 									key={project.title}
 									href={project.link}
 									target="_blank"
@@ -147,7 +150,7 @@ export default function Home() {
 											</p>
 										</div>
 									</div>
-								</a>
+								</Link>
 							))}
 						</div>
 					</div>
@@ -210,7 +213,7 @@ export default function Home() {
 										</a>
 									</p>
 								</div>
-								<a
+								<Link
 									href="https://twitter.com/literalat"
 									target="_blank"
 									rel="noopener noreferrer"
@@ -224,7 +227,7 @@ export default function Home() {
 								>
 									<Twitter className="h-5 w-5 text-gray-600" />
 									<span className="font-medium">X (Twitter)</span>
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
