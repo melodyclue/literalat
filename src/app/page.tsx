@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Star, Code, Github, Twitter, Contact } from "lucide-react";
+import posthog from "posthog-js";
 
 export default function Home() {
 	const socialLinks = [
@@ -30,23 +31,16 @@ export default function Home() {
 			title: "Lyk2",
 			description: "クリエイター支援プラットフォーム",
 			imageUrl: "/lyk2.png",
-			link: "https://lyk2.link/",
+			link: "https://lyk2.com",
 			status: "OPEN",
 		},
-		// {
-		// 	title: "Portfolio",
-		// 	description: "個人ポートフォリオサイト",
-		// 	imageUrl: "/projects/portfolio.png",
-		// 	link: "https://example.com",
-		// 	status: "FEATURED",
-		// },
-		// {
-		// 	title: "Other Project",
-		// 	description: "その他のプロジェクト",
-		// 	imageUrl: "/projects/other.png",
-		// 	link: "https://example.com/other",
-		// 	status: "WIP",
-		// },
+		{
+			title: "Tuple",
+			description: "関連リンクをプロジェクト単位でまとめて、スマートに共有",
+			imageUrl: "/tuple-transparent-bg.png",
+			link: "https://tuple.at",
+			status: "OPEN",
+		},
 	];
 
 	const techSkills = [
@@ -87,6 +81,12 @@ export default function Home() {
 									rel="noopener noreferrer"
 									aria-label={link.name}
 									className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900 transition-all"
+									onClick={() => {
+										posthog.capture('social_click', {
+											platform: link.name,
+											location: 'hero_section'
+										});
+									}}
 								>
 									{link.icon}
 								</a>
@@ -119,6 +119,12 @@ export default function Home() {
 									target="_blank"
 									rel="noopener noreferrer"
 									className="group hover:bg-gray-50 rounded-xl p-4 transition-colors"
+									onClick={() => {
+										posthog.capture('project_click', {
+											project: project.title,
+											location: 'projects_section'
+										});
+									}}
 								>
 									<div className="flex items-center">
 										<div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 mr-6">
@@ -152,7 +158,7 @@ export default function Home() {
 					<div className="max-w-4xl mx-auto rounded-3xl p-8">
 						<div className="flex items-center gap-2 mb-6">
 							<Code className="text-gray-400" size={24} />
-							<h2 className="text-2xl font-bold">Experience & Skills</h2>
+							<h2 className="text-2xl font-bold">スキルセット</h2>
 						</div>
 						<ul className="list-disc pl-5 space-y-3 text-gray-700 mb-8">
 							{skills.map((skill) => (
@@ -209,6 +215,12 @@ export default function Home() {
 									target="_blank"
 									rel="noopener noreferrer"
 									className="flex items-center gap-2 px-6 py-3 bg-gray-50 hover:bg-gray-100 transition-colors rounded-xl border border-gray-200"
+									onClick={() => {
+										posthog.capture('twitter_click', {
+											platform: 'X (Twitter)',
+											location: 'contact_section'
+										});
+									}}
 								>
 									<Twitter className="h-5 w-5 text-gray-600" />
 									<span className="font-medium">X (Twitter)</span>
