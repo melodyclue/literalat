@@ -34,7 +34,8 @@ export default function Home() {
 			title: "Lyk2",
 			description: "クリエイター支援プラットフォーム",
 			imageUrl: "/lyk2.png",
-			link: "https://lyk2.com",
+			// link: "https://lyk2.com",
+			link: "https://lyk2.vercel.app/",
 			status: "OPEN",
 		},
 		{
